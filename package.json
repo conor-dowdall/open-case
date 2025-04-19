@@ -12,6 +12,7 @@
   "license": "UNLICENSED",
   "description": "",
   "dependencies": {
+    "backbone": "^1.6.1",
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "pg": "^8.14.1"
