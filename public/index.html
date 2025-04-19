@@ -24,14 +24,17 @@
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container mt-5">
       <h1>Open Case</h1>
+      <p>
+        An open-source solution to proactive risk monitoring and case
+        management.
+      </p>
 
-      <h2 class="mt-4">Add New Task</h2>
-      <form id="addTaskForm">
+      <h2 class="mt-4">Add New Case</h2>
+      <form id="addCaseForm">
         <div class="form-group">
           <label for="title">Title:</label>
           <input type="text" class="form-control" id="title" required />
@@ -40,11 +43,11 @@
           <label for="description">Description:</label>
           <textarea class="form-control" id="description"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Add Task</button>
+        <button type="submit" class="btn btn-primary mt-2">Add Case</button>
       </form>
 
-      <h2 class="mt-4">Tasks</h2>
-      <ul id="taskList" class="list-group"></ul>
+      <h2 class="mt-4">Case List</h2>
+      <ul id="caseList" class="list-group"></ul>
     </div>
   </body>
 </html>
