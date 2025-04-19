@@ -10,18 +10,15 @@ jQuery(function () {
   const Cases = Backbone.Collection.extend({
     model: Case,
     url: "/api/cases",
-    parse: function (response) {
-      return response; // The API returns an array of case objects
-    },
   });
 
   const casesCollection = new Cases();
 
   const CaseView = Backbone.View.extend({
     tagName: "li",
-    className: "list-group-item",
+    className: "list-group-item p-4",
     template: _.template(
-      '<%= title %> - <%= description || "No description" %>'
+      '<a class="fs-3" href="api/cases/<%= id %>"><%= title %></a> <br /> <%= description || "No description" %>'
     ),
 
     render: function () {
