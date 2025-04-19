@@ -1,5 +1,7 @@
 # Open Case
 
+An open-source solution to proactive risk monitoring and case management.
+
 This is an open-source case-management application built using:
 
 - **Frontend:** HTML, CSS (Bootstrap), JavaScript, jQuery, Underscore.js, Backbone.js
@@ -7,9 +9,9 @@ This is an open-source case-management application built using:
 
 ## Features
 
-- Add new tasks with a title and description.
-- View a list of tasks.
-- Tasks are persisted in a PostgreSQL database.
+- Add new cases with a title and description.
+- View a list of cases.
+- Cases are persisted in a PostgreSQL database.
 - Uses a RESTful API for communication between the frontend and backend.
 
 ## Setup
@@ -57,8 +59,8 @@ This is an open-source case-management application built using:
 
 ## API Endpoints
 
-- `GET /api/tasks`: Get all tasks.
-- `GET /api/tasks/:id`: Get a single task by ID.
-- `POST /api/tasks`: Create a new task.
-- `PUT /api/tasks/:id`: Update an existing task.
-- `DELETE /api/tasks/:id`: Delete a task.
+- `GET /api/cases`: Get all cases.
+- `GET /api/cases/:id`: Get a single case by ID.
+- `POST /api/cases`: Create a new case.
+- `PUT /api/cases/:id`: Update an existing case.
+- `DELETE /api/cases/:id`: Delete a case.
