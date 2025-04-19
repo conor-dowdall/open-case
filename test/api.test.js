@@ -5,11 +5,11 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe("/GET /api/tasks", () => {
-  it("it should GET all the tasks", (done) => {
+describe("/GET /api/cases", () => {
+  it("it should GET all the cases", (done) => {
     chai
       .request(server)
-      .get("/api/tasks")
+      .get("/api/cases")
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a("array");

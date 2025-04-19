@@ -28,85 +28,85 @@ pool.connect((err, client, release) => {
   client.release();
 });
 
-// --- Define API Endpoints (CRUD for Tasks) ---
+// --- Define API Endpoints (CRUD for Cases) ---
 
-// GET all tasks
-app.get("/api/tasks", async (req, res) => {
+// GET all cases
+app.get("/api/cases", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM tasks ORDER BY id DESC");
+    const result = await pool.query("SELECT * FROM cases ORDER BY id DESC");
     res.json(result.rows);
   } catch (err) {
-    console.error("Error fetching tasks", err);
+    console.error("Error fetching cases", err);
     res.status(500).send("Server error");
   }
 });
 
-// GET a single task by ID
-app.get("/api/tasks/:id", async (req, res) => {
+// GET a single case by ID
+app.get("/api/cases/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await pool.query("SELECT * FROM tasks WHERE id = $1", [id]);
+    const result = await pool.query("SELECT * FROM cases WHERE id = $1", [id]);
     if (result.rows.length > 0) {
       res.json(result.rows[0]);
     } else {
-      res.status(404).send("Task not found");
+      res.status(404).send("Case not found");
     }
   } catch (err) {
-    console.error("Error fetching task", err);
+    console.error("Error fetching case", err);
     res.status(500).send("Server error");
   }
 });
 
-// POST a new task
-app.post("/api/tasks", async (req, res) => {
+// POST a new case
+app.post("/api/cases", async (req, res) => {
   const { title, description } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO tasks (title, description) VALUES ($1, $2) RETURNING *",
+      "INSERT INTO cases (title, description) VALUES ($1, $2) RETURNING *",
       [title, description]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
-    console.error("Error creating task", err);
+    console.error("Error creating case", err);
     res.status(500).send("Server error");
   }
 });
 
-// PUT (update) an existing task
-app.put("/api/tasks/:id", async (req, res) => {
+// PUT (update) an existing case
+app.put("/api/cases/:id", async (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
   try {
     const result = await pool.query(
-      "UPDATE tasks SET title = $1, description = $2, updated_at = NOW() WHERE id = $3 RETURNING *",
+      "UPDATE cases SET title = $1, description = $2, updated_at = NOW() WHERE id = $3 RETURNING *",
       [title, description, id]
     );
     if (result.rows.length > 0) {
       res.json(result.rows[0]);
     } else {
-      res.status(404).send("Task not found");
+      res.status(404).send("Case not found");
     }
   } catch (err) {
-    console.error("Error updating task", err);
+    console.error("Error updating case", err);
     res.status(500).send("Server error");
   }
 });
 
-// DELETE a task
-app.delete("/api/tasks/:id", async (req, res) => {
+// DELETE a case
+app.delete("/api/cases/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
-      "DELETE FROM tasks WHERE id = $1 RETURNING *",
+      "DELETE FROM cases WHERE id = $1 RETURNING *",
       [id]
     );
     if (result.rows.length > 0) {
-      res.status(200).send("Task deleted");
+      res.status(200).send("Case deleted");
     } else {
-      res.status(404).send("Task not found");
+      res.status(404).send("Case not found");
     }
   } catch (err) {
-    console.error("Error deleting task", err);
+    console.error("Error deleting case", err);
     res.status(500).send("Server error");
   }
 });

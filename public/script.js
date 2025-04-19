@@ -1,23 +1,23 @@
 jQuery(function () {
-  const Task = Backbone.Model.extend({
+  const Case = Backbone.Model.extend({
     defaults: {
       title: "",
       description: "",
     },
-    urlRoot: "/api/tasks",
+    urlRoot: "/api/cases",
   });
 
-  const Tasks = Backbone.Collection.extend({
-    model: Task,
-    url: "/api/tasks",
+  const Cases = Backbone.Collection.extend({
+    model: Case,
+    url: "/api/cases",
     parse: function (response) {
-      return response; // The API returns an array of task objects
+      return response; // The API returns an array of case objects
     },
   });
 
-  const tasksCollection = new Tasks();
+  const casesCollection = new Cases();
 
-  const TaskView = Backbone.View.extend({
+  const CaseView = Backbone.View.extend({
     tagName: "li",
     className: "list-group-item",
     template: _.template(
@@ -33,35 +33,35 @@ jQuery(function () {
   const AppView = Backbone.View.extend({
     el: ".container", // The main container element
     events: {
-      "submit #addTaskForm": "createTask",
+      "submit #addCaseForm": "createCase",
     },
 
     initialize: function () {
-      this.$taskList = $("#taskList");
+      this.$caseList = $("#caseList");
       this.$titleInput = $("#title");
       this.$descriptionInput = $("#description");
-      this.listenTo(tasksCollection, "add", this.renderTask);
-      this.listenTo(tasksCollection, "reset", this.renderAllTasks);
-      tasksCollection.fetch({ reset: true }); // Fetch initial tasks
+      this.listenTo(casesCollection, "add", this.renderCase);
+      this.listenTo(casesCollection, "reset", this.renderAllCases);
+      casesCollection.fetch({ reset: true }); // Fetch initial cases
     },
 
-    renderTask: function (task) {
-      const taskView = new TaskView({ model: task });
-      this.$taskList.prepend(taskView.render().el); // Add new tasks to the top
+    renderCase: function (caseVal) {
+      const caseView = new CaseView({ model: caseVal });
+      this.$caseList.prepend(caseView.render().el); // Add new cases to the top
     },
 
-    renderAllTasks: function () {
-      this.$taskList.empty();
-      tasksCollection.each(this.renderTask, this);
+    renderAllCases: function () {
+      this.$caseList.empty();
+      casesCollection.each(this.renderCase, this);
     },
 
-    createTask: function (event) {
+    createCase: function (event) {
       event.preventDefault();
       const title = this.$titleInput.val().trim();
       const description = this.$descriptionInput.val().trim();
 
       if (title) {
-        tasksCollection.create(
+        casesCollection.create(
           { title: title, description: description },
           { wait: true }
         ); // Send to server and wait for response
