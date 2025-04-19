@@ -1,14 +1,12 @@
 // public/script.js
 
-$(document).ready(function () {
-  // ... (existing jQuery code can be removed or integrated)
-
+jQuery(function () {
   const Task = Backbone.Model.extend({
     defaults: {
       title: "",
       description: "",
     },
-    urlRoot: "/api/tasks", // Maps to your Express API endpoint for tasks
+    urlRoot: "/api/tasks",
   });
 
   const Tasks = Backbone.Collection.extend({
