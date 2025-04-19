@@ -26,27 +26,47 @@
     />
   </head>
   <body>
-    <div class="container mt-5">
-      <h1>Open Case</h1>
-      <p>
+    <div class="container">
+      <h1 class="mt-5 mb-2">
+        <img
+          src="img/logo.svg"
+          alt="Open Case Logo"
+          style="width: 3rem; margin: 1rem"
+        />Open Case
+      </h1>
+      <p class="mb-4">
         An open-source solution to proactive risk monitoring and case
         management.
       </p>
 
-      <h2 class="mt-4">Add New Case</h2>
+      <hr />
+
+      <h2 class="mt-5 mb-3">
+        <img
+          src="img/add.svg"
+          alt="Addition Symbol"
+          style="width: 3rem; margin-right: 1rem"
+        />Add New Case
+      </h2>
       <form id="addCaseForm">
-        <div class="form-group">
+        <div class="form-group mt-3 mb-3">
           <label for="title">Title:</label>
           <input type="text" class="form-control" id="title" required />
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3 mb-3">
           <label for="description">Description:</label>
           <textarea class="form-control" id="description"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Add Case</button>
+        <button type="submit" class="btn btn-primary">Add Case</button>
       </form>
 
-      <h2 class="mt-4">Case List</h2>
+      <h2 class="mt-5">
+        <img
+          src="img/list.svg"
+          alt="Addition Symbol"
+          style="width: 3rem; margin-right: 1rem"
+        />Recent Cases List
+      </h2>
       <ul id="caseList" class="list-group"></ul>
     </div>
   </body>
