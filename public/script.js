@@ -1,5 +1,3 @@
-// public/script.js
-
 jQuery(function () {
   const Task = Backbone.Model.extend({
     defaults: {
