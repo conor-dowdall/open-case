@@ -33,7 +33,9 @@ pool.connect((err, client, release) => {
 // GET all cases
 app.get("/api/cases", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM cases ORDER BY id DESC");
+    const result = await pool.query(
+      "SELECT * FROM cases ORDER BY updated_at ASC;"
+    );
     res.json(result.rows);
   } catch (err) {
     console.error("Error fetching cases", err);
