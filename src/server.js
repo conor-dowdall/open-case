@@ -12,7 +12,7 @@ app.use(express.static("public"));
 
 // PostgreSQL Connection Pool
 const pool = new Pool({
-  host: "localhost", // Adjust if your PostgreSQL is elsewhere
+  host: "localhost",
   port: 5432,
   database: "open_case_dev",
   user: process.env.DB_USER || "postgres",
