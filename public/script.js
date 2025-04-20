@@ -14,7 +14,7 @@ jQuery(function () {
 
   const casesCollection = new Cases();
 
-  const CaseView = Backbone.View.extend({
+  const CaseListItemView = Backbone.View.extend({
     tagName: "li",
     className: "list-group-item p-4",
     template: _.template(
@@ -34,22 +34,22 @@ jQuery(function () {
     },
 
     initialize: function () {
-      this.$caseList = $("#caseList");
+      this.$caseItemsList = $("#caseItemsList");
       this.$titleInput = $("#title");
       this.$descriptionInput = $("#description");
-      this.listenTo(casesCollection, "add", this.renderCase);
-      this.listenTo(casesCollection, "reset", this.renderAllCases);
+      this.listenTo(casesCollection, "add", this.renderCaseItem);
+      this.listenTo(casesCollection, "reset", this.renderAllCaseItems);
       casesCollection.fetch({ reset: true }); // Fetch initial cases
     },
 
-    renderCase: function (caseVal) {
-      const caseView = new CaseView({ model: caseVal });
-      this.$caseList.prepend(caseView.render().el); // Add new cases to the top
+    renderCaseItem: function (caseModel) {
+      const caseListItemView = new CaseListItemView({ model: caseModel });
+      this.$caseItemsList.prepend(caseListItemView.render().el); // Add new cases to the top
     },
 
-    renderAllCases: function () {
-      this.$caseList.empty();
-      casesCollection.each(this.renderCase, this);
+    renderAllCaseItems: function () {
+      this.$caseItemsList.empty();
+      casesCollection.each(this.renderCaseItem, this);
     },
 
     createCase: function (event) {
