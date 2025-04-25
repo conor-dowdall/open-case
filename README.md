@@ -14,7 +14,9 @@ This is an open-source case-management application built using:
 - Cases are persisted in a PostgreSQL database.
 - Uses a RESTful API for communication between the frontend and backend.
 
-## Setup
+## Screenshot
+
+![Open Case Development Screenshot](./open-case-screenshot.png)
 
 ### Prerequisites
 
