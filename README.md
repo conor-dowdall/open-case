@@ -40,7 +40,7 @@ This is an open-source case-management application built using:
 
 3.  **Create the PostgreSQL database:**
 
-    - Create a database named `open_case_dev` in PostgreSQL.
+    - Create a database named `open_case_dev` with a table named `cases` in PostgreSQL.
     - Adjust the database connection settings in `src/server.js` if necessary.
 
 4.  **Run the server:**
